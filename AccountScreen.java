@@ -10,7 +10,7 @@ public class AccountScreen extends JFrame {
         Account account = db.getAccounts().stream().filter(a -> a.getAccountID().equals(loggedInID)).findFirst().get();
 
         setTitle("Account Operations");
-        setSize(640, 430);
+        setSize(640, 450);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -22,6 +22,10 @@ public class AccountScreen extends JFrame {
         JLabel balanceLabel = new JLabel("Current Balance: $" + account.getBalance());
         balanceLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 
+        // create the label for account type
+        JLabel accountTypeLabel = new JLabel("Account Type: " + account.getClass().getSimpleName());
+        accountTypeLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+
         // create the label for question "What would you like to do today?"
         JLabel questionLabel = new JLabel("What would you like to do today?");
         questionLabel.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -30,6 +34,7 @@ public class AccountScreen extends JFrame {
         JPanel labelsPanel = new JPanel();
         labelsPanel.setLayout(new BoxLayout(labelsPanel, BoxLayout.PAGE_AXIS));
         labelsPanel.add(welcomeLabel);
+        labelsPanel.add(accountTypeLabel);
         labelsPanel.add(balanceLabel);
         labelsPanel.add(Box.createRigidArea(new Dimension(0, 20))); // add some vertical spacing
         labelsPanel.add(questionLabel);
