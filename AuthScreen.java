@@ -1,6 +1,8 @@
 import java.awt.*;
 import javax.swing.*;
 import java.util.function.BiConsumer;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class AuthScreen extends JFrame {
 
@@ -80,6 +82,20 @@ public class AuthScreen extends JFrame {
         gbc.gridwidth = 2;
         gbc.anchor = GridBagConstraints.CENTER;
         add(loginButton, gbc);
+
+
+        // add a listener for when frame becomes visible
+        addComponentListener(new ComponentAdapter() {
+            public void componentShown(ComponentEvent e) {
+                // clear the text fields
+                userField.setText("");
+                passField.setText("");
+
+                // update the labels
+                userLabel.setText("USERNAME (Dummy: " + db.getAccounts().get(0).getAccountID() + ")");
+                passLabel.setText("PASSWORD (Dummy: " + db.getAccounts().get(0).getPassword() + ")");
+            }
+        });
 
     }
 

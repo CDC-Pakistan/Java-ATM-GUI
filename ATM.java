@@ -1,28 +1,34 @@
 
 public class ATM{
 
-    String loggedInID;
-
-    AuthScreen authScreen;
-    AccountScreen accountScreen = null;
-
     DB db;
     Authenticator auth;
+    AuthScreen authScreen;
+    AccountScreen accountScreen;
+
 
     public ATM() {
 
-        db = new DB();
-        auth = new Authenticator();
+        db = new DB();                      // initialize database
+        auth = new Authenticator();         // initialize authenticator
+
+
+        // log all accounts and their passwords
+        System.out.println("Dummy Accounts:");
+        db.getAccounts().forEach(account -> {
+            System.out.println("Username: " + account.getAccountID() + " Password: " + account.getPassword());
+        });
 
         // initialize screens
 
         // this screen handles authentication
         AuthScreen authScreen = new AuthScreen((accountID, authScreenObject) -> {
-            
-            loggedInID = accountID;
 
             // this screen handles account operations
-            accountScreen = new AccountScreen(accountID, db, auth);
+            accountScreen = new AccountScreen(accountID, db, auth, () -> {
+                // handles when user logs out.
+                authScreenObject.setVisible(true);
+            });
             
             authScreenObject.setVisible(false);
             accountScreen.setVisible(true);
