@@ -17,4 +17,13 @@ public class BusinessAccount extends Account {
     public String toString() {
         return "Account ID: " + accountID + " Balance: " + balance + " Owner: " + owner + " Business Name: " + businessName;
     }
+
+    public static void main(String[] args) {
+
+        User user = new User("John", "Doe");
+        BusinessAccount account = new BusinessAccount(1000, user, "John's Business");
+        System.out.println(account);
+
+    }
+    
 }

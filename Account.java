@@ -46,4 +46,13 @@ public class Account {
     public String toString() {
         return "Account ID: " + accountID + " Balance: " + balance + " Owner: " + owner;
     }
+
+    public static void main(String[] args) {
+
+        User user = new User("John", "Doe");
+        Account account = new Account(1000, user);
+        System.out.println(account);
+
+    }
+
 }

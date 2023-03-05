@@ -10,4 +10,9 @@ public class InputValidator {
             return false;
         }
     }
+
+    public static void main(String[] args) {
+        System.out.println(isValidDoubleString("123.45"));
+        System.out.println(isValidDoubleString("123.45.67"));
+    }
 }

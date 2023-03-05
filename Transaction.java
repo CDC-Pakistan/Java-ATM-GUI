@@ -46,4 +46,10 @@ public class Transaction {
     public String toString() {
         return "Transaction ID: " + tID + " Transaction Type: " + tType + " Transaction Amount: " + tAmount;
     }
+
+    public static void main(String[] args) {
+        Transaction transaction = new Transaction("123", "Deposit", 1000);
+        System.out.println(transaction);
+    }
+
 }

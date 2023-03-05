@@ -58,4 +58,12 @@ public class DB {
     public ArrayList<Transaction> getTransactions() {
         return transactions;
     }
+
+    public static void main(String[] args) {
+        DB db = new DB();
+        System.out.println(db.getUsers());
+        System.out.println(db.getAccounts());
+        System.out.println(db.getTransactions());
+    }
+
 }

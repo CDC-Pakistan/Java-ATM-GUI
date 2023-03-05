@@ -17,4 +17,11 @@ public class SavingsAccount extends Account {
     public String toString() {
         return "Account ID: " + accountID + " Balance: " + balance + " Owner: " + owner + " Interest Rate: " + interestRate;
     }
+
+    public static void main(String[] args) {
+        User user = new User("John", "Doe");
+        SavingsAccount account = new SavingsAccount(1000, user, 0.5);
+        System.out.println(account);
+    }
+
 }
